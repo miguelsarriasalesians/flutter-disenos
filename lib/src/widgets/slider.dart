@@ -58,12 +58,15 @@ class _CrearEstructuraSlideshow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[
-        this.puntosArriba == true ? _Dots(this.slides.length) : SizedBox(),
-        Expanded(child: _Slides(this.slides)),
-        this.puntosArriba == false ? SizedBox() : _Dots(this.slides.length),
-      ],
-    );
+        children: this.puntosArriba
+            ? <Widget>[
+                Expanded(child: _Slides(this.slides)),
+                _Dots(this.slides.length),
+              ]
+            : <Widget>[
+                _Dots(this.slides.length),
+                Expanded(child: _Slides(this.slides)),
+              ]);
   }
 }
 
