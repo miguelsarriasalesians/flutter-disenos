@@ -43,7 +43,7 @@ class ScrollPage extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: Image(
-        image: AssetImage('assets/scroll-1.png'),
+        image: AssetImage('assets/lava.png'),
         fit: BoxFit.cover,
       ),
     );
@@ -58,10 +58,10 @@ class ScrollPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           SizedBox(height: 20.0 ),
-          Text('11°', style: estiloTexto ),
-          Text('Miércoles', style: estiloTexto ),
+          Text('You missed', style: estiloTexto ),
+          Text('A SEMICOLON', style: estiloTexto ),
           Expanded( child: Container() ),
-          Icon( Icons.keyboard_arrow_down, size: 70.0, color: Colors.white )
+          Icon( Icons.keyboard_arrow_down, size: 150.0, color: Colors.black54 )
         ],
       ),
     );
@@ -72,15 +72,28 @@ class ScrollPage extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: Color.fromRGBO(108, 192, 218, 1.0),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: FractionalOffset(0.0, 0.3),
+              end: FractionalOffset(0.0, 1.0),
+              colors: [
+                Colors.yellow,
+                Colors.orange,
+                Colors.red,
+                Colors.red[900]
+              ]
+          )
+      ),
       child: Center(
         child: RaisedButton(
+          elevation: 10,
           shape: StadiumBorder(),
-          color: Colors.blue,
+          color: Colors.red[900],
           textColor: Colors.white,
+
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-            child: Text('Bienvenidos', style: TextStyle(fontSize: 20.0)),
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            child: Text('Welcome to Debug Hell', style: TextStyle(fontSize: 25.0)),
           ),
           onPressed: ()=> Navigator.pushNamed(context, 'botones'),
         ),
