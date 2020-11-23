@@ -1,3 +1,4 @@
+import 'package:disenos/src/pages/animated_heart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
         'basico'  : (BuildContext context ) => BasicoPage(),
         'scroll'  : (BuildContext context ) => ScrollPage(),
         'botones' : (BuildContext context ) => BotonesPage(),
+        'corazon' : (BuildContext context ) => AnimatedHeart(),
+
       },
     );
   }

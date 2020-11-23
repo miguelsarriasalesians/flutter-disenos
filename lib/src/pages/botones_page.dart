@@ -12,7 +12,7 @@ class BotonesPage extends StatelessWidget {
           children: <Widget>[
             _fondoApp(),
             Column(
-              children: <Widget>[_titulos(), _botonesRedondeados()],
+              children: <Widget>[_titulos(), _botonesRedondeados(context)],
             )
           ],
         ),
@@ -121,7 +121,7 @@ class BotonesPage extends StatelessWidget {
     );
   }
 
-  Widget _botonesRedondeados() {
+  Widget _botonesRedondeados(BuildContext context) {
     return Column(
       children: [
         FadeInLeftBig(
@@ -133,13 +133,17 @@ class BotonesPage extends StatelessWidget {
                   Colors.blue,
                   Icons.border_all,
                   'General',
-                  () {},
+                  () {
+                    Navigator.pushNamed(context, 'corazon');
+                  },
+                  context
                 ),
                 _crearBotonRedondeado(
                   Colors.purpleAccent,
                   Icons.directions_bus,
                   'Bus',
                   () {},
+                  context
                 ),
               ]),
             ],
@@ -155,12 +159,14 @@ class BotonesPage extends StatelessWidget {
                   Icons.shop,
                   'Buy',
                   () {},
+                  context
                 ),
                 _crearBotonRedondeado(
                   Colors.orange,
                   Icons.insert_drive_file,
                   'File',
                   () {},
+                  context
                 ),
               ]),
             ],
@@ -171,7 +177,7 @@ class BotonesPage extends StatelessWidget {
   }
 
   Widget _crearBotonRedondeado(
-      Color color, IconData icono, String texto, Function function) {
+      Color color, IconData icono, String texto, Function function, BuildContext context) {
     return InkWell(
       onTap: function,
       child: ClipRect(
