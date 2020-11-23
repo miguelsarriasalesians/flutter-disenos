@@ -78,12 +78,17 @@ class BotonesPage extends StatelessWidget {
             SizedBox(height: 10.0),
             ZoomIn(
               duration: Duration(milliseconds: 1500),
-              child: Center(child: Text(
-                    'Classify this transaction into a particular category',
-                    style: TextStyle(color: Colors.black, fontSize: 18.0,), textAlign: TextAlign.center,),
+              child: Center(
+                child: Text(
+                  'Classify this transaction into a particular category',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.0,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-
           ],
         ),
       ),
@@ -92,18 +97,19 @@ class BotonesPage extends StatelessWidget {
 
   Widget _bottomNavigationBar(BuildContext context) {
     return SlideInUp(
-
       child: Theme(
         data: Theme.of(context).copyWith(
             canvasColor: Colors.red[900],
             primaryColor: Colors.white,
-            textTheme: Theme.of(context).textTheme.copyWith(
-                caption: TextStyle(color: Colors.black54))),
+            textTheme: Theme.of(context)
+                .textTheme
+                .copyWith(caption: TextStyle(color: Colors.black54))),
         child: BottomNavigationBar(
           elevation: 1,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today, size: 30.0), title: Container()),
+                icon: Icon(Icons.calendar_today, size: 30.0),
+                title: Container()),
             BottomNavigationBarItem(
                 icon: Icon(Icons.bubble_chart, size: 30.0), title: Container()),
             BottomNavigationBarItem(
@@ -123,9 +129,18 @@ class BotonesPage extends StatelessWidget {
           child: Table(
             children: [
               TableRow(children: [
-                _crearBotonRedondeado(Colors.blue, Icons.border_all, 'General'),
                 _crearBotonRedondeado(
-                    Colors.purpleAccent, Icons.directions_bus, 'Bus'),
+                  Colors.blue,
+                  Icons.border_all,
+                  'General',
+                  () {},
+                ),
+                _crearBotonRedondeado(
+                  Colors.purpleAccent,
+                  Icons.directions_bus,
+                  'Bus',
+                  () {},
+                ),
               ]),
             ],
           ),
@@ -135,8 +150,18 @@ class BotonesPage extends StatelessWidget {
           child: Table(
             children: [
               TableRow(children: [
-                _crearBotonRedondeado(Colors.pinkAccent, Icons.shop, 'Buy'),
-                _crearBotonRedondeado(Colors.orange, Icons.insert_drive_file, 'File'),
+                _crearBotonRedondeado(
+                  Colors.pinkAccent,
+                  Icons.shop,
+                  'Buy',
+                  () {},
+                ),
+                _crearBotonRedondeado(
+                  Colors.orange,
+                  Icons.insert_drive_file,
+                  'File',
+                  () {},
+                ),
               ]),
             ],
           ),
@@ -145,28 +170,32 @@ class BotonesPage extends StatelessWidget {
     );
   }
 
-  Widget _crearBotonRedondeado(Color color, IconData icono, String texto) {
-    return ClipRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        child: Container(
-          height: 140.0,
-          margin: EdgeInsets.all(15.0),
-          decoration: BoxDecoration(
-              color: Colors.black54,
-              borderRadius: BorderRadius.circular(20.0)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              SizedBox(height: 5.0),
-              CircleAvatar(
-                backgroundColor: color,
-                radius: 35.0,
-                child: Icon(icono, color: Colors.white, size: 30.0),
-              ),
-              Text(texto, style: TextStyle(color: color, fontSize: 20)),
-              SizedBox(height: 5.0)
-            ],
+  Widget _crearBotonRedondeado(
+      Color color, IconData icono, String texto, Function function) {
+    return InkWell(
+      onTap: function,
+      child: ClipRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Container(
+            height: 140.0,
+            margin: EdgeInsets.all(15.0),
+            decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(20.0)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                SizedBox(height: 5.0),
+                CircleAvatar(
+                  backgroundColor: color,
+                  radius: 35.0,
+                  child: Icon(icono, color: Colors.white, size: 30.0),
+                ),
+                Text(texto, style: TextStyle(color: color, fontSize: 20)),
+                SizedBox(height: 5.0)
+              ],
+            ),
           ),
         ),
       ),
