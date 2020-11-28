@@ -142,7 +142,10 @@ class BotonesPage extends StatelessWidget {
                   Colors.purpleAccent,
                   Icons.directions_bus,
                   'Bus',
-                  () {},
+                  () {
+                    Navigator.pushNamed(context, 'gallery');
+
+                  },
                   context
                 ),
               ]),
